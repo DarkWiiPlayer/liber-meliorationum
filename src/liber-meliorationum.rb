@@ -81,7 +81,7 @@ module LiberMeliorationum
   module Assert
     class AssertionFailed < StandardError; end
     refine Object do
-      def assert(msg, &p)
+      def assert(msg=nil, &p)
         raise AssertionFailed, msg if not self.instance_eval(&p)
         self
       end
