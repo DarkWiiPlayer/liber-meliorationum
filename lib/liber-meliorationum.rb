@@ -27,6 +27,7 @@ module LiberMeliorationum
 
   module Apply
     refine Object do
+			using LiberMeliorationum
       def apply(*args, &p)
         p.call(self, *args)
       end
@@ -55,6 +56,7 @@ module LiberMeliorationum
   module Assert
     class AssertionFailed < StandardError; end
     refine Object do
+			using LiberMeliorationum
       def assert(message=nil, error_class=AssertionFailed, &p)
         raise error_class, message if not self.instance_eval(&p)
         self
@@ -87,6 +89,7 @@ end
     end
 
     refine Object do
+			using LiberMeliorationum
       def maybe
         LiberMeliorationum::Maybe::Monad.new(self)
       end
