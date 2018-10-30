@@ -54,7 +54,7 @@ module LiberMeliorationum
 
     refine Object do
       def maybe
-        Distillery::Maybe::Monad.new(self)
+        LiberMeliorationum::Maybe::Monad.new(self)
       end
     end
   end
