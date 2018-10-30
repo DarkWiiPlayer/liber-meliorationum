@@ -37,32 +37,6 @@ module LiberMeliorationum
 
 # ──────────────────────────────────────────────────────────────────────────────
 
-  module Maybe
-    class Monad < BasicObject
-      attr_reader :object
-      def initialize(object)
-        @object = object
-      end
-      def method_missing(sym, *args, &block)
-        if @object then
-          Monad.new @object.send(sym, *args, &block)
-        else
-          self
-        end
-      end
-    end
-
-    refine Object do
-      def maybe
-        LiberMeliorationum::Maybe::Monad.new(self)
-      end
-    end
-  end
-  include Maybe
-  using Maybe
-
-# ──────────────────────────────────────────────────────────────────────────────
-
   module Quote
     refine String do
       def quote
@@ -90,6 +64,32 @@ module LiberMeliorationum
   include Assert
   using Assert
 end
+
+# ──────────────────────────────────────────────────────────────────────────────
+
+  module Maybe
+    class Monad < BasicObject
+      attr_reader :object
+      def initialize(object)
+        @object = object
+      end
+      def method_missing(sym, *args, &block)
+        if @object then
+          Monad.new @object.send(sym, *args, &block)
+        else
+          self
+        end
+      end
+    end
+
+    refine Object do
+      def maybe
+        LiberMeliorationum::Maybe::Monad.new(self)
+      end
+    end
+  end
+  include Maybe
+  using Maybe
 
 # ── ALIAS ─────────────────────────────────────────────────────────────────────
 
