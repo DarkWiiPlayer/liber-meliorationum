@@ -58,11 +58,13 @@ module LiberMeliorationum
     refine Object do
 			using LiberMeliorationum
       def assert(message=nil, error_class=AssertionFailed, &p)
-        raise error_class, message if not self.instance_eval(&p)
+        raise error_class, message if p && !self.instance_eval(&p)
+        raise error_class, message if !p && !self
         self
       end
       def assert_not(message=nil, error_class=AssertionFailed, &p)
-        raise error_class, message if self.instance_eval(&p)
+        raise error_class, message if p && self.instance_eval(&p)
+        raise error_class, message if !p && self
         self
       end
     end
