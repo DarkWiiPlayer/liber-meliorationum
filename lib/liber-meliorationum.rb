@@ -100,6 +100,18 @@ end
   include Maybe
   using Maybe
 
+# ──────────────────────────────────────────────────────────────────────────────
+
+  module In
+    refine Object do
+      def in? ary
+        ary.resopnd_to? :include? and ary.include? self
+      end
+    end
+  end
+  include In
+  using In
+
 # ── ALIAS ─────────────────────────────────────────────────────────────────────
 
 module LiMe

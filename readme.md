@@ -8,16 +8,23 @@ Structure
 
 - Alias
 	- Fold
-		Adds a `fold` alias to `Enumerable#inject`.
+		adds a `fold` alias to `Enumerable#inject`.
 - ToBool
-	Adds a `to_bool` method to `Object` to avoid cryptic idioms like `!!object`.
+	adds a `to_bool` method to `Object` to avoid cryptic idioms like `!!object`.
 - Apply
-	Adds an `apply` method to `Object`, which evaluates a given block in the context of the object. This allows using Procs and Lambdas in a more point-free, object oriented style.
+	adds an `apply` method to `Object`,
+  which evaluates a given block in the context of the object.
+  This allows using Procs and Lambdas in a more point-free, object oriented style.
 - Maybe
-	Adds a *maybe* monad and a method to `object` to convert it into one.
+	adds a *maybe* monad and a method to `object` to convert it into one.
 - Assert
-	Adds an `assert` method to `Object` which behaves similar to Luas `assert` function. It raises an error with the provided message when the provided block returns `false`. Otherwise returns the object itself.
-
+	adds an `assert` method to `Object` which behaves similar to Luas `assert` function.
+  It raises an error with the provided message when the provided block returns `false`.
+  Otherwise returns the object itself.
+- In
+  adds an `in? ary` method to Object which checks if the array occurs as an
+  element of `ary`. If `ary` does not respond to `include?`, `false` is
+  automatically returned.
 
 Examples
 --------------------------------------------------------------------------------
