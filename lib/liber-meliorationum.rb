@@ -1,4 +1,7 @@
 module LiberMeliorationum
+
+# ── ALIAS ─────────────────────────────────────────────────────────────────────
+
   module Alias
     module Fold
       refine Enumerable do
@@ -71,7 +74,6 @@ module LiberMeliorationum
   end
   include Assert
   using Assert
-end
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -111,8 +113,7 @@ end
   end
   include In
   using In
-
-# ── ALIAS ─────────────────────────────────────────────────────────────────────
+end
 
 module LiMe
   include LiberMeliorationum
