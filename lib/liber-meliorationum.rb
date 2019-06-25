@@ -130,6 +130,4 @@ module LiberMeliorationum
   using In
 end
 
-module LiMe
-  include LiberMeliorationum
-end
+LiMe = LiberMeliorationum
