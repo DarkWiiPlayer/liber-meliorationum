@@ -21,6 +21,10 @@ Structure
 	adds an `assert` method to `Object` which behaves similar to Luas `assert` function.
   It raises an error with the provided message when the provided block returns `false`.
   Otherwise returns the object itself.
+- Enumerable#group\_by(&criterion)
+  Filters through the elements of an Enumerable. Calls `criterion` on every
+  element and groups elements by what `criterion` returns.
+  Returns a hash mapping criterion(element) => [element, element, ...]
 - In
   adds an `in? ary` method to Object which checks if the array occurs as an
   element of `ary`. If `ary` does not respond to `include?`, `false` is
