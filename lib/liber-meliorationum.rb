@@ -12,7 +12,6 @@ module LiberMeliorationum
     using Fold
   end
   include Alias
-  using Alias
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -24,7 +23,6 @@ module LiberMeliorationum
     end
   end
   include ToBool
-  using ToBool
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -37,7 +35,6 @@ module LiberMeliorationum
     end
   end
   include Apply
-  using Apply
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -52,7 +49,6 @@ module LiberMeliorationum
     end
   end
   include Quote
-  using Quote
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -73,7 +69,6 @@ module LiberMeliorationum
     end
   end
   include Assert
-  using Assert
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -100,7 +95,6 @@ module LiberMeliorationum
     end
   end
   include Maybe
-  using Maybe
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -115,7 +109,6 @@ module LiberMeliorationum
     end
   end
   include EnumerableGroupBy
-  using EnumerableGroupBy
 
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -127,7 +120,6 @@ module LiberMeliorationum
     end
   end
   include In
-  using In
 end
 
 LiMe = LiberMeliorationum
