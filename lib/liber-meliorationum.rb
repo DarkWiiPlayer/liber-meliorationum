@@ -104,6 +104,21 @@ module LiberMeliorationum
 
 # ──────────────────────────────────────────────────────────────────────────────
 
+  module EnumerableGroupBy
+    refine Enumerable do
+      def group_by &criterion
+        each_with_object({}) do
+          |entry, groups|
+          (groups[criterion.call(entry)] ||= []) << entry
+        end
+      end
+    end
+  end
+  include EnumerableGroupBy
+  using EnumerableGroupBy
+
+# ──────────────────────────────────────────────────────────────────────────────
+
   module In
     refine Object do
       def in? ary
