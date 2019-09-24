@@ -141,6 +141,16 @@ module LiberMeliorationum
     end
   end
   include In
+
+# ──────────────────────────────────────────────────────────────────────────────
+
+  module Core
+    include Alias::Fold
+    include ToBool
+    include Apply
+    include EnumerableGroupBy
+    include Assert
+  end
 end
 
 LiMe = LiberMeliorationum
