@@ -115,7 +115,7 @@ module LiberMeliorationum
   module In
     refine Object do
       def in? ary
-        ary.resopnd_to? :include? and ary.include? self
+        ary.respond_to? :include? and ary.include? self
       end
     end
   end
