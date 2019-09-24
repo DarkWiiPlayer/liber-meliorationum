@@ -111,6 +111,27 @@ module LiberMeliorationum
   include EnumerableGroupBy
 
 # ──────────────────────────────────────────────────────────────────────────────
+  
+  module EnumberableNumbered
+    refine Enumerable do
+      using Assert
+      def second
+        self[2]
+      end
+      def first!
+        first.assert('Attempting to get first element of empty enumerable')
+      end
+      def second!
+        second.assert('Attempting to get second element of empty enumerable')
+      end
+      def last!
+        last.assert('Attempting to get last element of empty enumerable')
+      end
+    end
+  end
+  include EnumExtend
+
+# ──────────────────────────────────────────────────────────────────────────────
 
   module In
     refine Object do
