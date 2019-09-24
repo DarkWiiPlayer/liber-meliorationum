@@ -1,3 +1,5 @@
+<!-- vim: set noexpandtab :miv -->
+
 Liber Meliorationum
 ================================================================================
 
@@ -6,32 +8,32 @@ This is a simple library that aims to make daily tasks in Ruby easier by providi
 Structure
 --------------------------------------------------------------------------------
 
-- Alias
-	- Fold
+-	Alias
+	-	Fold
 		adds a `fold` alias to `Enumerable#inject`.
-- ToBool
+-	ToBool
 	adds a `to_bool` method to `Object` to avoid cryptic idioms like `!!object`.
-- Apply
+-	Apply
 	adds an `apply` method to `Object`,
-  which evaluates a given block in the context of the object.
-  This allows using Procs and Lambdas in a more point-free, object oriented style.
-- Maybe
+	which evaluates a given block in the context of the object.
+	This allows using Procs and Lambdas in a more point-free, object oriented style.
+-	Maybe
 	adds a *maybe* monad and a method to `object` to convert it into one.
-- Assert
+-	Assert
 	adds an `assert` method to `Object` which behaves similar to Luas `assert` function.
-  It raises an error with the provided message when the provided block returns `false`.
-  Otherwise returns the object itself.
-- Enumerable#group\_by(&criterion)
-  Filters through the elements of an Enumerable. Calls `criterion` on every
-  element and groups elements by what `criterion` returns.
-  Returns a hash mapping criterion(element) => [element, element, ...]
-- EnumerableNumbered
-  Adds Enumerable#second method (works as expected)
-  and Enumerable#first!, #second! and #last!, which error instead of returning nil
-- In
-  adds an `in? ary` method to Object which checks if the array occurs as an
-  element of `ary`. If `ary` does not respond to `include?`, `false` is
-  automatically returned.
+	It raises an error with the provided message when the provided block returns `false`.
+	Otherwise returns the object itself.
+-	Enumerable#group\_by(&criterion)
+	Filters through the elements of an Enumerable. Calls `criterion` on every
+	element and groups elements by what `criterion` returns.
+	Returns a hash mapping criterion(element) => [element, element, ...]
+-	EnumerableNumbered
+	Adds Enumerable#second method (works as expected)
+	and Enumerable#first!, #second! and #last!, which error instead of returning nil
+-	In
+	adds an `in? ary` method to Object which checks if the array occurs as an
+	element of `ary`. If `ary` does not respond to `include?`, `false` is
+	automatically returned.
 
 Examples
 --------------------------------------------------------------------------------
