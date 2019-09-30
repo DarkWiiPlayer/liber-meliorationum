@@ -153,6 +153,44 @@ module LiberMeliorationum
 		include EnumerableGroupBy
 		include Assert
 	end
+
+	# ──────────────────────────────────────────────────────────────────────────────
+
+	module Pipe
+		class Proclist
+			def initialize(*args)
+				@procs = args
+			end
+
+			def +(other)
+				self.class.new(self, other)
+			end
+
+			def <<(other)
+				@procs << other
+				self
+			end
+
+			def call(*args)
+				@procs.each do |procedure|
+					args = [procedure.call(*args)]
+				end
+				return args.first
+			end
+
+			def self.<<(arg)
+				self.new(arg)
+			end
+		end
+
+		refine Proc do
+			def +(other)
+				Proclist.new(self, other)
+			end
+			alias :<< :+
+		end
+	end
+	using Pipe
 end
 
 LiMe = LiberMeliorationum

@@ -1,4 +1,4 @@
-<!-- vim: set noexpandtab :miv -->
+<!-- vim: set noexpandtab tabstop=3 :miv -->
 
 Liber Meliorationum
 ================================================================================
@@ -34,6 +34,11 @@ Structure
 	adds an `in? ary` method to Object which checks if the array occurs as an
 	element of `ary`. If `ary` does not respond to `include?`, `false` is
 	automatically returned.
+-	Pipe (⚠️ Experimental)
+	Allows "adding" procs to each other to chain them.
+	`(a + b).call(foo)` is the same as `(b.call(a.call(foo)))`
+	The `<<` operation does the same, but without creating a new object every
+	time, so it's more efficient for one-liners.
 
 Examples
 --------------------------------------------------------------------------------
