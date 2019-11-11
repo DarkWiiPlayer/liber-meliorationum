@@ -83,18 +83,14 @@ module LiberMeliorationum
 			end
 
 			def method_missing(sym, *args, &block)
-				if @object
-					Monad.new @object.send(sym, *args, &block)
-				else
-					super or self
-				end
+				Maybe::Monad.new @object.send(sym, *args, &block) rescue Maybe::Monad.new nil
 			end
 
 			def respond_to_missing?(sym)
 				if @object
-					@object.respond_to?(sym) or self
+					@object.respond_to?(sym) or super
 				else
-					super or self
+					super
 				end
 			end
 		end
