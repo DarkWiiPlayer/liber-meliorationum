@@ -50,14 +50,40 @@ Examples
 
 	using LiMe # using LiberMeliorationum
 
-	print nil.to_bool.to_s # prints false
+	# LiMe::Alias::Fold
+	puts [1, 2, 3, 4, 5].fold {|a, b| a+b} # prints 15
 
-	print "hello".apply { |str| str.upcase } # prints HELLO
+	# LiMe::ToBool
+	puts nil.to_bool.to_s # prints false
 
-	print [].first.even? # raises an error
-	print [].maybe.first.even?.value # prints nil
+	# LiMe::Apply
+	puts "hello".apply { |str| str.upcase } # prints HELLO
 
-	puts 'Hello'.quote # prints "Hello"
+	# LiMe::Maybe
+	puts [].first.even? # raises an error
+	puts [].maybe.first.even?.value # prints nil
 
+	# LiMe::Assert
 	puts 20.assert('Number is not even', &:even?).to_s # prints 20
 	puts 19.assert('Number is not even', &:even?).to_s # Raises an error
+
+	# LiMe::EnumerableGroupBy
+	[1, 2, 3, 4].group_by(&:even?) # returns {true => [2,4], false => [1,3]}
+
+	# LiMe::EnumerableNumbered
+	[1, 2].second # returns 2
+	[1, 2].last   # returns 2
+	[1].first!    # returns 1
+	[].first!     # raises an error
+
+	# LiMe::In
+	20.in? [1, 2, 3] # returns false
+
+	# LiMe::Value
+	'foo'.value   # returns 'foo'
+	['foo'].value # returns 'foo'
+	[].value      # raises an error
+	[1, 2].value  # raises an error
+	{a: 'b'}      # returns 'b'
+
+	puts 'Hello'.quote # prints "Hello"
