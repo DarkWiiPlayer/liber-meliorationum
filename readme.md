@@ -34,6 +34,11 @@ Structure
 	adds an `in? ary` method to Object which checks if the array occurs as an
 	element of `ary`. If `ary` does not respond to `include?`, `false` is
 	automatically returned.
+-	Value
+	For objects, returns the object itself.
+	For arrays, returns the single value of an array or raises if the array has
+	zero or more than one elements.
+	For hashes, acts like for arrays, but returns the value.
 -	Pipe (⚠️ Experimental)
 	Allows "adding" procs to each other to chain them.
 	`(a + b).call(foo)` is the same as `(b.call(a.call(foo)))`

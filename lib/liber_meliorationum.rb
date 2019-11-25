@@ -73,6 +73,30 @@ module LiberMeliorationum
 	end
 	include Assert
 
+	# Make sure an array only has one element and return it
+	module Value
+		refine Object do
+			def value
+				self
+			end
+		end
+		refine Hash do
+			using Assert
+			def value
+				assert("Expected hash to have exactly one pair"){ keys.size == 1 }
+				self[keys.first]
+			end
+		end
+		refine Array do
+			using Assert
+			def value
+				assert("Expected array to have exactly one element"){ size == 1 }
+				first
+			end
+		end
+	end
+	include Value
+
 	# Integration of *maybe* monads
 	module Maybe
 		# A maybe monad
@@ -120,7 +144,7 @@ module LiberMeliorationum
 	# - first
 	# - second
 	# - last
-	module EnumberableNumbered
+	module EnumerableNumbered
 		refine Enumerable do
 			using Assert
 			def second
@@ -140,7 +164,7 @@ module LiberMeliorationum
 			end
 		end
 	end
-	include EnumExtend
+	include EnumerableNumbered
 
 	# Adds an `in` method to check whether object is in a collection
 	module In
@@ -197,6 +221,7 @@ module LiberMeliorationum
 		include Apply
 		include EnumerableGroupBy
 		include Assert
+		include Value
 	end
 end
 
