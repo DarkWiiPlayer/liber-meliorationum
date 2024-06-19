@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # A collection of Aliases and Refinements to make life easier
-module LiberMeliorationum
+module Lime
 	# Less esoteric way to convert any value into a boolean
 	# 	using LiMe::ToBool
 	# 	puts 3.to_bool
@@ -148,9 +148,9 @@ module LiberMeliorationum
 #			def last!
 #				# TODO: Implement again
 #			end
-#		end
+		end
 	end
-	include EnumerableNumbered
+	include Numbered
 
 	# Adds an `in` method to check whether object is in a collection.
 	# This works on everything that responds to :include?
@@ -174,7 +174,7 @@ module LiberMeliorationum
 	# 	20.if{|num| num < 40}.next #21
 	# 	20.if{|num| num < 10}.next #20
 	module If
-		class Skip < BasicObject
+		class SkipNext < BasicObject
 			def initialize object
 				@object = object
 			end
@@ -187,26 +187,20 @@ module LiberMeliorationum
 
 		refine Object do
 			def if bool=MISSING
-				if bool==MISSING
+				if block_given?
 					if yield self
 						self
 					else
-						Skip.new(self)
+						SkipNext.new(self)
+					end
+				elsif bool!=MISSING
+					if bool
+						self
+					else
+						SkipNext.new(self)
 					end
 				else
-					if block_given?
-						if bool
-							yield self
-						else
-							self
-						end
-					else
-						if bool
-							self
-						else
-							Skip.new(self)
-						end
-					end
+					self ? self : SkipNext.new(self)
 				end
 			end
 		end
@@ -214,4 +208,4 @@ module LiberMeliorationum
 	include If
 end
 
-LiMe = LiberMeliorationum
+LiberMeliorationum = Lime

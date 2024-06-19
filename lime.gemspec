@@ -1,10 +1,7 @@
-# vim: set noexpandtab :miv #
-# frozen_string_literal: true
-
 Gem::Specification.new do |s|
-	s.name        = 'liber_meliorationum'
-	s.version     = '0.3.0'
-	s.date        = Time.now.strftime '%Y-%m-%d'
+	s.name        = 'lime'
+	s.version     = '0.4.0'
+	s.date        = `git log -1 --format=%ai`.split(" ").first
 	s.summary     = "Lightweight utility library for Ruby"
 	s.description = "Lightweight utility library for Ruby"
 	s.authors     = ["DarkWiiPlayer"]
